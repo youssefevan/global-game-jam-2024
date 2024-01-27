@@ -57,7 +57,9 @@ texture = ExtResource("4_soa4e")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_vqoil")
+volume_db = -10.306
 autoplay = true
+bus = &"Background"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
