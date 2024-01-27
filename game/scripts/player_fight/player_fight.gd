@@ -3,8 +3,9 @@ class_name Player
 
 @onready var idle = $StateManager/Idle
 @onready var move = $StateManager/Move
-@onready var punch = $StateManager/Punch
+@onready var jump = $StateManager/Jump
 @onready var hurt = $StateManager/Hurt
+@onready var punch = $StateManager/Punch
 
 @onready var states = $StateManager
 @onready var animator = $Animator
@@ -22,16 +23,24 @@ var hitstun_frames : int
 var hitbox_dir : float
 var got_hurt : bool
 
+var jump_velocity = 400
+var release_jump_velocity = 200
+var jump_was_pressed : bool
+var jump_buffer = 0.05
+
 var gravity = 1000
 
 func _ready():
 	states.init(self)
 	current_health = max_health
+	jump_was_pressed = false
 	
 	$Hitbox/Collider.disabled = true
 
 func _physics_process(delta):
 	states.physics_update(delta)
+	jump_buffering()
+	
 	move_and_slide()
 
 func handle_input() -> void:
@@ -45,9 +54,18 @@ func apply_movement(delta):
 
 func apply_gravity(delta):
 	if !is_on_floor():
-		velocity.y += gravity * delta
+		if velocity.y > 0:
+			velocity.y += gravity * 1.5 * delta
+		else:
+			velocity.y += gravity * delta
 	else:
 		velocity.y = 1
+
+func jump_buffering() -> void:
+	if Input.is_action_just_pressed("up"):
+		jump_was_pressed = true
+		await get_tree().create_timer(jump_buffer).timeout
+		jump_was_pressed = false
 
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("Enemy"):

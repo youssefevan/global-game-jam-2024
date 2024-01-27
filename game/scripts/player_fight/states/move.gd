@@ -17,6 +17,9 @@ func physics_update(delta):
 	
 	if entity.got_hurt == true:
 		return entity.hurt
+	
+	if entity.jump_was_pressed:
+		return entity.jump
 
 func exit():
 	super.exit()

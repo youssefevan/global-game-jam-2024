@@ -5,7 +5,9 @@ var anim_done : bool
 func enter():
 	super.enter()
 	anim_done = false
-	entity.movement_input = 0
+	
+	if entity.is_on_floor():
+		entity.movement_input = 0
 
 func physics_update(delta):
 	super.physics_update(delta)
