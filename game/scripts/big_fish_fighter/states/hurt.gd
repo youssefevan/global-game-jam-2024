@@ -41,4 +41,3 @@ func physics_update(delta):
 
 func exit():
 	super.exit()
-	frames = 0

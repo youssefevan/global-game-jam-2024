@@ -54,7 +54,13 @@ func apply_gravity(delta):
 func randomize_direction():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
-	movement_direction = random.randi_range(-1, 1)
+	
+	if random.randi_range(0, 5) == 0:
+		movement_direction = 0
+	elif random.randi_range(0, 5) == 1:
+		movement_direction = $Hitbox.scale.x
+	elif random.randi_range(0, 5) >= 2:
+		movement_direction = -$Hitbox.scale.x
 
 func get_random_action():
 	var random = RandomNumberGenerator.new()
