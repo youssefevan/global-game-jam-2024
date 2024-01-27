@@ -57,6 +57,7 @@ size = Vector2(40, 65)
 
 [node name="FishFighter" type="CharacterBody2D"]
 position = Vector2(0, 3)
+collision_layer = 4
 safe_margin = 0.02
 script = ExtResource("1_2e3ba")
 
@@ -85,6 +86,9 @@ script = ExtResource("5_456a7")
 
 [node name="Hitbox" parent="." groups=["Enemy"] instance=ExtResource("6_dukoq")]
 damage = 10.0
+knockback_angle = -75.0
+knockback_power = 600.0
+hitstun = 20
 
 [node name="Collider" parent="Hitbox" index="0"]
 position = Vector2(0, -31.5)
@@ -95,6 +99,8 @@ shape = SubResource("RectangleShape2D_2nanp")
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2(0, -31.5)
 shape = SubResource("RectangleShape2D_7hyfs")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hitbox"]
 [editable path="Hurtbox"]

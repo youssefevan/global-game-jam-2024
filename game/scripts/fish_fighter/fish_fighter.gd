@@ -40,3 +40,11 @@ func randomize_direction():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	movement_direction = random.randf_range(-1,1)
+
+func _on_hurtbox_area_entered(area):
+	if area.is_in_group("Player"):
+		get_hurt(area.damage)
+
+func get_hurt(damage):
+	current_health -= damage
+	print("Fish: ", current_health, "/" , max_health)
