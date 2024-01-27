@@ -34,7 +34,7 @@ func physics_update(delta):
 	frames -= 1
 	
 	if frames == 0:
-		return entity.idle
+		return entity.flop
 	
 	if entity.got_hurt == true:
 		return entity.hurt
