@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://k3mgyy1e5txg"]
+[gd_scene load_steps=10 format=3 uid="uid://k3mgyy1e5txg"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="1_261xr"]
 [ext_resource type="Script" path="res://scripts/player_fight/player_fight.gd" id="1_klvyr"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/idle.gd" id="2_3h7xc"]
 [ext_resource type="Texture2D" uid="uid://dnsp7u8biechp" path="res://sprites/fighting/player.png" id="2_t71ma"]
+[ext_resource type="Script" path="res://scripts/player_fight/states/move.gd" id="5_24w60"]
 
 [sub_resource type="Animation" id="Animation_ml4k1"]
 resource_name = "Idle"
@@ -20,9 +21,25 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_orqmw"]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xpmfe"]
 _data = {
-"Idle": SubResource("Animation_ml4k1")
+"Idle": SubResource("Animation_ml4k1"),
+"Move": SubResource("Animation_orqmw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13nmu"]
@@ -47,9 +64,9 @@ shape = SubResource("RectangleShape2D_13nmu")
 [node name="StateManager" type="Node" parent="."]
 script = ExtResource("1_261xr")
 starting_state = NodePath("Idle")
-print_states = true
 
 [node name="Idle" type="Node" parent="StateManager"]
 script = ExtResource("2_3h7xc")
 
 [node name="Move" type="Node" parent="StateManager"]
+script = ExtResource("5_24w60")
