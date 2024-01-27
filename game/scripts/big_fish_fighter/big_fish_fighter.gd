@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name BigFish
 
 @onready var idle = $StateManager/Idle
 @onready var move = $StateManager/Move
@@ -15,7 +15,9 @@ var max_health = 100
 var current_health
 
 var speed = 10000
-var movement_input : float
+var movement_direction : float
+
+var gravity = 1000
 
 var damage_taken : float
 var knockback_angle : float
@@ -24,56 +26,59 @@ var hitstun_frames : int
 var hitbox_dir : float
 var got_hurt : bool
 
-var jump_velocity = 400
-var release_jump_velocity = 200
-var jump_was_pressed : bool
-var jump_buffer = 0.05
-
-var gravity = 1000
-
 var opponent
+var opponent_in_range : bool
 
 func _ready():
 	states.init(self)
 	current_health = max_health
-	jump_was_pressed = false
 	
-	opponent = get_tree().get_first_node_in_group("Fish")
+	opponent = get_tree().get_first_node_in_group("Player")
 	face_opponent()
 	
-	$Hitbox/Collider.disabled = true
+	randomize()
 
 func _physics_process(delta):
 	states.physics_update(delta)
-	jump_buffering()
 	move_and_slide()
 
-func handle_input() -> void:
-	movement_input = Input.get_action_strength("right") - Input.get_action_strength("left")
-
 func apply_movement(delta):
-	if is_on_floor():
-		velocity.x = movement_input * speed * delta
-	else:
-		velocity.x = lerp(velocity.x, movement_input * speed * delta, 5 * delta)
+	velocity.x = movement_direction * speed * delta
 
 func apply_gravity(delta):
 	if !is_on_floor():
-		if velocity.y > 0:
-			velocity.y += gravity * 1.5 * delta
-		else:
-			velocity.y += gravity * delta
+		velocity.y += gravity * delta
 	else:
 		velocity.y = 1
 
-func jump_buffering() -> void:
-	if Input.is_action_just_pressed("up"):
-		jump_was_pressed = true
-		await get_tree().create_timer(jump_buffer).timeout
-		jump_was_pressed = false
+func randomize_direction():
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	
+	if random.randi_range(0, 5) == 0:
+		movement_direction = 0
+	elif random.randi_range(0, 5) == 1:
+		movement_direction = $Hitbox.scale.x
+	elif random.randi_range(0, 5) >= 2:
+		movement_direction = -$Hitbox.scale.x
+
+func get_random_action():
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	
+	var action : State
+	
+	if random.randi_range(0, 2) == 0:
+		action = punch
+	elif random.randi_range(0, 2) == 1:
+		action = kick
+	elif random.randi_range(0, 10) >= 2:
+		action = move
+	
+	return action
 
 func _on_hurtbox_area_entered(area):
-	if area.is_in_group("Enemy"):
+	if area.is_in_group("Player"):
 		get_hurt(area)
 
 func get_hurt(area):
@@ -86,12 +91,18 @@ func get_hurt(area):
 
 func take_damage():
 	current_health -= damage_taken
-	print("Player: ", current_health, "/" , max_health)
+	print("Fish: ", current_health, "/" , max_health)
 
 func face_opponent():
 	if opponent.global_position.x - global_position.x >= 0:
-		$Sprite.flip_h = false
-		$Hitbox.scale.x = 1
-	else:
 		$Sprite.flip_h = true
 		$Hitbox.scale.x = -1
+	else:
+		$Sprite.flip_h = false
+		$Hitbox.scale.x = 1
+
+func opponent_detection():
+	if abs(opponent.global_position.x - global_position.x) < 200:
+		opponent_in_range = true
+	else:
+		opponent_in_range = false
