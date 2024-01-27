@@ -223,7 +223,6 @@ shape = SubResource("RectangleShape2D_13nmu")
 [node name="StateManager" type="Node" parent="."]
 script = ExtResource("1_261xr")
 starting_state = NodePath("Idle")
-print_states = true
 
 [node name="Idle" type="Node" parent="StateManager"]
 script = ExtResource("2_3h7xc")

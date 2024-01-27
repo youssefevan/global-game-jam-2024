@@ -7,7 +7,7 @@ func enter():
 	entity.got_hurt = false
 	
 	entity.velocity = get_knockback_angle() * entity.knockback_power
-	print(entity.velocity)
+	#print(entity.velocity)
 	
 	entity.take_damage()
 	frames = entity.hitstun_frames
@@ -18,7 +18,7 @@ func get_knockback_angle():
 	var kb_y = sin(kb_angle_radians)
 	var output = Vector2(kb_x, kb_y)
 	
-	if entity.hitbox_dir < 0:
+	if entity.hitbox_dir > 0:
 		output.x *= -1
 	else:
 		output.x *= 1
