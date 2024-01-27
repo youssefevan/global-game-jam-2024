@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmnt53lukgc3x"]
+[gd_scene load_steps=14 format=3 uid="uid://bmnt53lukgc3x"]
 
 [ext_resource type="Script" path="res://scripts/fish_fighter/fish_fighter.gd" id="1_2e3ba"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="2_q1wen"]
 [ext_resource type="Texture2D" uid="uid://ceq1o502n43lb" path="res://sprites/fighting/fish1.png" id="2_rdmtk"]
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/idle.gd" id="4_sxkpv"]
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/flop.gd" id="5_456a7"]
+[ext_resource type="PackedScene" uid="uid://btnlac8qaxwwi" path="res://scenes/fighting/engine/hitbox.tscn" id="6_dukoq"]
+[ext_resource type="PackedScene" uid="uid://cittceegqqxen" path="res://scenes/fighting/engine/hurtbox.tscn" id="7_t3ben"]
 
-[sub_resource type="Animation" id="Animation_ml4k1"]
+[sub_resource type="Animation" id="Animation_erwav"]
 resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -21,36 +23,46 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_orqmw"]
-resource_name = "Move"
+[sub_resource type="Animation" id="Animation_w5oxq"]
+resource_name = "Flop"
+length = 0.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0]
+"values": [false, true]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xpmfe"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3o5r"]
 _data = {
-"Idle": SubResource("Animation_ml4k1"),
-"Move": SubResource("Animation_orqmw")
+"Flop": SubResource("Animation_w5oxq"),
+"Idle": SubResource("Animation_erwav")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22j43"]
-size = Vector2(32, 64)
+size = Vector2(32, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nanp"]
+size = Vector2(36, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hyfs"]
+size = Vector2(40, 65)
 
 [node name="FishFighter" type="CharacterBody2D"]
+position = Vector2(0, 3)
+safe_margin = 0.02
 script = ExtResource("1_2e3ba")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xpmfe")
+"": SubResource("AnimationLibrary_o3o5r")
 }
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -58,7 +70,7 @@ position = Vector2(0, -32)
 texture = ExtResource("2_rdmtk")
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -31.5)
 shape = SubResource("RectangleShape2D_22j43")
 
 [node name="StateManager" type="Node" parent="."]
@@ -70,3 +82,19 @@ script = ExtResource("4_sxkpv")
 
 [node name="Flop" type="Node" parent="StateManager"]
 script = ExtResource("5_456a7")
+
+[node name="Hitbox" parent="." groups=["Enemy"] instance=ExtResource("6_dukoq")]
+damage = 10.0
+
+[node name="Collider" parent="Hitbox" index="0"]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_2nanp")
+
+[node name="Hurtbox" parent="." instance=ExtResource("7_t3ben")]
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_7hyfs")
+
+[editable path="Hitbox"]
+[editable path="Hurtbox"]
