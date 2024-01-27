@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://db023cm3q8ejf"]
-
-[ext_resource type="PackedScene" uid="uid://k3mgyy1e5txg" path="res://scenes/player_fight.tscn" id="1_wvfqn"]
-[ext_resource type="PackedScene" path="res://scenes/fish_fighter.tscn" id="2_v74wx"]
+[gd_scene load_steps=2 format=3 uid="uid://db023cm3q8ejf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7cqb"]
 size = Vector2(511.75, 97)
-
-[sub_resource type="TileSet" id="TileSet_l4cnc"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,13 +10,3 @@ size = Vector2(511.75, 97)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(255.875, 246)
 shape = SubResource("RectangleShape2D_a7cqb")
-
-[node name="PlayerFight" parent="." instance=ExtResource("1_wvfqn")]
-position = Vector2(124, 197)
-
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_l4cnc")
-format = 2
-
-[node name="FishFighter" parent="." instance=ExtResource("2_v74wx")]
-position = Vector2(376, 199)
