@@ -13,9 +13,12 @@ func _physics_process(delta):
 func cast():
 	if Input.is_action_just_pressed("cast"):
 		if $Rod/Line.get_point_count() >= 2:
+			if Input.is_action_just_pressed("reel"):
+				$Rod/Line.remove_point
 			self.set_process_input(false)
 		else:
 			$Rod/Line.add_point(get_local_mouse_position())
+
 func movement():
 	cast()
 	if $Rod/Line.get_point_count() >= 2:
