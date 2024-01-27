@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmnt53lukgc3x"]
+
+[ext_resource type="Script" path="res://scripts/fish_fighter/fish_fighter.gd" id="1_2e3ba"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="2_q1wen"]
+[ext_resource type="Texture2D" uid="uid://ceq1o502n43lb" path="res://sprites/fighting/fish1.png" id="2_rdmtk"]
+[ext_resource type="Script" path="res://scripts/fish_fighter/states/idle.gd" id="4_sxkpv"]
+[ext_resource type="Script" path="res://scripts/fish_fighter/states/flop.gd" id="5_456a7"]
+
+[sub_resource type="Animation" id="Animation_ml4k1"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_orqmw"]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xpmfe"]
+_data = {
+"Idle": SubResource("Animation_ml4k1"),
+"Move": SubResource("Animation_orqmw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22j43"]
+size = Vector2(32, 64)
+
+[node name="FishFighter" type="CharacterBody2D"]
+script = ExtResource("1_2e3ba")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xpmfe")
+}
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("2_rdmtk")
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_22j43")
+
+[node name="StateManager" type="Node" parent="."]
+script = ExtResource("2_q1wen")
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateManager"]
+script = ExtResource("4_sxkpv")
+
+[node name="Flop" type="Node" parent="StateManager"]
+script = ExtResource("5_456a7")

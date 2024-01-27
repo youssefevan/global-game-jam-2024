@@ -1,8 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://dup2ydk6fyeue"]
+[gd_scene load_steps=5 format=3 uid="uid://dup2ydk6fyeue"]
 
 [ext_resource type="PackedScene" uid="uid://k3mgyy1e5txg" path="res://scenes/player_fight.tscn" id="1_c4y4u"]
+[ext_resource type="Texture2D" uid="uid://cfgou58c28pc" path="res://sprites/fighting/placeholder.png" id="2_8wcg1"]
+[ext_resource type="PackedScene" uid="uid://bmnt53lukgc3x" path="res://scenes/fish_fighter.tscn" id="2_q5gbj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85igg"]
+size = Vector2(16, 16)
 
 [node name="FightingAreana" type="Node2D"]
-position = Vector2(320, 448)
+position = Vector2(128, 200)
 
 [node name="PlayerFight" parent="." instance=ExtResource("1_c4y4u")]
+
+[node name="FishFighter" parent="." instance=ExtResource("2_q5gbj")]
+position = Vector2(256, 0)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(128, 64)
+scale = Vector2(32, 1)
+metadata/_edit_group_ = true
+
+[node name="Collider" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_85igg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+texture = ExtResource("2_8wcg1")

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name Fish
 
 @onready var idle = $StateManager/Idle
 @onready var move = $StateManager/Move
@@ -8,7 +8,7 @@ class_name Player
 @onready var animator = $Animator
 
 var speed = 5000
-var movement_input : float
+var movement_direction : float
 
 var gravity = 1000
 
@@ -19,11 +19,8 @@ func _physics_process(delta):
 	states.physics_update(delta)
 	move_and_slide()
 
-func handle_input() -> void:
-	movement_input = Input.get_action_strength("right") - Input.get_action_strength("left")
-
 func apply_movement(delta):
-	velocity.x = movement_input * speed * delta
+	velocity.x = movement_direction * speed * delta
 
 func apply_gravity(delta):
 	if !is_on_floor():
