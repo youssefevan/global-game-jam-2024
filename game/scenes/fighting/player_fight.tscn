@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://k3mgyy1e5txg"]
+[gd_scene load_steps=14 format=3 uid="uid://k3mgyy1e5txg"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="1_261xr"]
 [ext_resource type="Script" path="res://scripts/player_fight/player_fight.gd" id="1_klvyr"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/idle.gd" id="2_3h7xc"]
 [ext_resource type="Texture2D" uid="uid://dnsp7u8biechp" path="res://sprites/fighting/player.png" id="2_t71ma"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/move.gd" id="5_24w60"]
+[ext_resource type="Script" path="res://scripts/player_fight/states/punch.gd" id="6_6dcrj"]
 [ext_resource type="PackedScene" uid="uid://cittceegqqxen" path="res://scenes/fighting/engine/hurtbox.tscn" id="6_qkmo1"]
 
 [sub_resource type="Animation" id="Animation_ml4k1"]
@@ -37,10 +38,14 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_yqh0a"]
+resource_name = "Punch"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xpmfe"]
 _data = {
 "Idle": SubResource("Animation_ml4k1"),
-"Move": SubResource("Animation_orqmw")
+"Move": SubResource("Animation_orqmw"),
+"Punch": SubResource("Animation_yqh0a")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13nmu"]
@@ -61,6 +66,7 @@ libraries = {
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
 texture = ExtResource("2_t71ma")
+hframes = 4
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -29.5)
@@ -76,12 +82,16 @@ script = ExtResource("2_3h7xc")
 [node name="Move" type="Node" parent="StateManager"]
 script = ExtResource("5_24w60")
 
+[node name="Punch" type="Node" parent="StateManager"]
+script = ExtResource("6_6dcrj")
+
 [node name="Hurtbox" parent="." instance=ExtResource("6_qkmo1")]
 
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2(-0.5, -31)
 shape = SubResource("RectangleShape2D_6mck5")
 
+[connection signal="animation_finished" from="Animator" to="StateManager/Punch" method="_on_animator_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]
