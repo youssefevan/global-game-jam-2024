@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://scenes/Mainarena.tscn")
+	get_tree().change_scene_to_file("res://scenes/fighting_test.tscn")
 
 func _on_options_pressed():
 	get_tree().change_scene_to_file("res://scenes/options.tscn")
