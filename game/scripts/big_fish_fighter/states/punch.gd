@@ -25,7 +25,3 @@ func exit():
 
 func _on_animator_animation_finished(anim_name):
 	anim_done = true
-
-
-func _on_animator_animation_changed(old_name, new_name):
-	pass # Replace with function body.
