@@ -15,8 +15,11 @@ func physics_update(delta):
 	entity.apply_gravity(delta)
 	entity.face_opponent()
 	
-	if Input.is_action_just_pressed("punch"):
+	if Input.is_action_just_pressed("cast"):
 		return entity.punch
+	
+	if Input.is_action_just_pressed("reel"):
+		return entity.kick
 	
 	if entity.got_hurt == true:
 		return entity.hurt
