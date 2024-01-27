@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmnt53lukgc3x"]
+[gd_scene load_steps=15 format=3 uid="uid://bmnt53lukgc3x"]
 
 [ext_resource type="Script" path="res://scripts/fish_fighter/fish_fighter.gd" id="1_2e3ba"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="2_q1wen"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/idle.gd" id="4_sxkpv"]
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/flop.gd" id="5_456a7"]
 [ext_resource type="PackedScene" uid="uid://btnlac8qaxwwi" path="res://scenes/fighting/engine/hitbox.tscn" id="6_dukoq"]
+[ext_resource type="Script" path="res://scripts/fish_fighter/states/hurt.gd" id="6_er4rw"]
 [ext_resource type="PackedScene" uid="uid://cittceegqqxen" path="res://scenes/fighting/engine/hurtbox.tscn" id="7_t3ben"]
 
 [sub_resource type="Animation" id="Animation_erwav"]
@@ -83,6 +84,9 @@ script = ExtResource("4_sxkpv")
 
 [node name="Flop" type="Node" parent="StateManager"]
 script = ExtResource("5_456a7")
+
+[node name="Hurt" type="Node" parent="StateManager"]
+script = ExtResource("6_er4rw")
 
 [node name="Hitbox" parent="." groups=["Enemy"] instance=ExtResource("6_dukoq")]
 damage = 10.0

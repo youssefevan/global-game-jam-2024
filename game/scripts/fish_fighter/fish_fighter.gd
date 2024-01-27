@@ -3,6 +3,7 @@ class_name Fish
 
 @onready var idle = $StateManager/Idle
 @onready var flop = $StateManager/Flop
+@onready var hurt = $StateManager/Hurt
 
 @onready var states = $StateManager
 @onready var animator = $Animator
@@ -16,6 +17,13 @@ var movement_direction : float
 var flop_power = 400
 
 var gravity = 1000
+
+var damage_taken : float
+var knockback_angle : float
+var knockback_power : float
+var hitstun_frames : int
+var hitbox_dir : float
+var got_hurt : bool
 
 func _ready():
 	states.init(self)
@@ -43,8 +51,16 @@ func randomize_direction():
 
 func _on_hurtbox_area_entered(area):
 	if area.is_in_group("Player"):
-		get_hurt(area.damage)
+		get_hurt(area)
 
-func get_hurt(damage):
-	current_health -= damage
+func get_hurt(area):
+	damage_taken = area.damage
+	hitstun_frames = area.hitstun
+	knockback_angle = area.knockback_angle
+	knockback_power = area.knockback_power
+	hitbox_dir = area.global_position.x - global_position.x
+	got_hurt = true
+
+func take_damage(damage):
+	current_health -= damage_taken
 	print("Fish: ", current_health, "/" , max_health)

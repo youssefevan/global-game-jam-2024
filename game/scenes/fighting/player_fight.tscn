@@ -238,6 +238,9 @@ script = ExtResource("7_d4yvx")
 
 [node name="Hitbox" parent="." groups=["Player"] instance=ExtResource("8_ajb4n")]
 damage = 10.0
+knockback_angle = -75.0
+knockback_power = 450.0
+hitstun = 20
 
 [node name="Collider" parent="Hitbox" index="0"]
 position = Vector2(41, -31)
