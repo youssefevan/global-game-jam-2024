@@ -7,6 +7,9 @@ class_name Player
 @onready var states = $StateManager
 @onready var animator = $Animator
 
+var max_health = 100
+var current_health
+
 var speed = 5000
 var movement_input : float
 
@@ -14,6 +17,7 @@ var gravity = 1000
 
 func _ready():
 	states.init(self)
+	current_health = max_health
 
 func _physics_process(delta):
 	states.physics_update(delta)
@@ -30,3 +34,11 @@ func apply_gravity(delta):
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 1
+
+func _on_hurtbox_area_entered(area):
+	if area.is_in_group("Enemy"):
+		get_hurt(area.damage)
+
+func get_hurt(damage):
+	current_health -= damage
+	print(current_health, "/" , max_health)
