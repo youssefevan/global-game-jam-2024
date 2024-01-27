@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://8uctsbr3saf8"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_e5p0x"]
+[ext_resource type="Texture2D" uid="uid://dvqx7qiry2vyy" path="res://Tilemaps/Clouds/Clouds 1/2.png" id="2_m7q4v"]
+[ext_resource type="Texture2D" uid="uid://bvto18wvj7n7j" path="res://Tilemaps/Clouds/Clouds 1/1.png" id="2_s0q31"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e5p0x")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("2_m7q4v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 1.126
+anchor_bottom = 1.11
+offset_left = 242.0
+offset_top = 123.0
+offset_right = -203.512
+offset_bottom = -99.68
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="buttonstart" type="Button" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label"]
+layout_mode = 0
+offset_left = -90.0
+offset_top = -44.0
+offset_right = -1.0
+offset_bottom = -9.0
+text = "Play"
+
+[node name="buttonoptions" type="Button" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label"]
+layout_mode = 0
+offset_left = -91.0
+offset_top = -1.0
+offset_bottom = 32.0
+text = "Options"
+
+[node name="buttonexits" type="Button" parent="CanvasLayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Label"]
+layout_mode = 0
+offset_left = -90.0
+offset_top = 38.0
+offset_right = 2.0
+offset_bottom = 75.0
+text = "Quit"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("2_s0q31")

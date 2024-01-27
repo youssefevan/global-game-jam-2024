@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://scenes/fish_fighter.tscn" id="2_v74wx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7cqb"]
-size = Vector2(521.5, 97)
+size = Vector2(511.75, 97)
 
 [sub_resource type="TileSet" id="TileSet_l4cnc"]
 
@@ -13,7 +13,7 @@ size = Vector2(521.5, 97)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(251, 246)
+position = Vector2(255.875, 246)
 shape = SubResource("RectangleShape2D_a7cqb")
 
 [node name="PlayerFight" parent="." instance=ExtResource("1_wvfqn")]
