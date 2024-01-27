@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://k3mgyy1e5txg"]
+
+[ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="1_261xr"]
+[ext_resource type="Script" path="res://scripts/player_fight/player_fight.gd" id="1_klvyr"]
+[ext_resource type="Script" path="res://scripts/player_fight/states/idle.gd" id="2_3h7xc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tsvam"]
+
+[node name="PlayerFight" type="CharacterBody2D"]
+script = ExtResource("1_klvyr")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tsvam")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="StateManager" type="Node" parent="."]
+script = ExtResource("1_261xr")
+starting_state = NodePath("Idle")
+print_states = true
+
+[node name="Idle" type="Node" parent="StateManager"]
+script = ExtResource("2_3h7xc")
