@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://8uctsbr3saf8"]
+[gd_scene load_steps=6 format=3 uid="uid://8uctsbr3saf8"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_p63o0"]
+[ext_resource type="Texture2D" uid="uid://bvto18wvj7n7j" path="res://Tilemaps/Clouds/Clouds 1/1.png" id="2_q3ldy"]
+[ext_resource type="Texture2D" uid="uid://dvqx7qiry2vyy" path="res://Tilemaps/Clouds/Clouds 1/2.png" id="3_hc227"]
+[ext_resource type="Texture2D" uid="uid://cccynu0l04uhx" path="res://Tilemaps/Clouds/Clouds 1/3.png" id="4_soa4e"]
+[ext_resource type="AudioStream" uid="uid://cnyg1dl7fy65m" path="res://Sounds/1648341585ilu.mp3" id="5_vqoil"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -15,8 +19,11 @@ script = ExtResource("1_p63o0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 170.0
+offset_top = 100.0
+offset_right = 270.0
+offset_bottom = 201.0
+scale = Vector2(1.5, 1.5)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -33,6 +40,24 @@ text = "Options"
 layout_mode = 2
 text = "Quit
 "
+
+[node name="1" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(287, 86)
+texture = ExtResource("2_q3ldy")
+
+[node name="2" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(286, 128)
+texture = ExtResource("3_hc227")
+
+[node name="3" type="Sprite2D" parent="."]
+position = Vector2(283, 115)
+texture = ExtResource("4_soa4e")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vqoil")
+autoplay = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

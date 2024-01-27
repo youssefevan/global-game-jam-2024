@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqby8ej84jg6c"]
+[gd_scene load_steps=5 format=3 uid="uid://cqby8ej84jg6c"]
 
-[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_a4byb"]
+[ext_resource type="Script" path="res://scenes/options.gd" id="1_tvmte"]
+[ext_resource type="Texture2D" uid="uid://dvqx7qiry2vyy" path="res://Tilemaps/Clouds/Clouds 1/2.png" id="2_bvcrc"]
+[ext_resource type="Texture2D" uid="uid://bvto18wvj7n7j" path="res://Tilemaps/Clouds/Clouds 1/1.png" id="3_lf48h"]
+[ext_resource type="AudioStream" uid="uid://cnyg1dl7fy65m" path="res://Sounds/1648341585ilu.mp3" id="4_82w3q"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,29 +14,51 @@ offset_top = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a4byb")
+script = ExtResource("1_tvmte")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_direction = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 70.0
+offset_top = 100.0
+offset_right = 370.0
+offset_bottom = 201.0
+scale = Vector2(1.2, 1.2)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Getting Head volune" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Start"
+text = "Getting Head Volume"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Getting Head" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Options"
+text = "Getting Head"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit
-"
+text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="1" type="Sprite2D" parent="."]
+show_behind_parent = true
+visibility_layer = 256
+position = Vector2(247, 71)
+texture = ExtResource("3_lf48h")
+
+[node name="2" type="Sprite2D" parent="."]
+show_behind_parent = true
+visibility_layer = 8
+position = Vector2(246, 127)
+texture = ExtResource("2_bvcrc")
+
+[node name="Background Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_82w3q")
+volume_db = -1.297
+autoplay = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Getting Head volune" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Getting Head" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_quit_pressed"]
