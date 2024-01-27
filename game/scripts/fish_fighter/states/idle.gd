@@ -10,6 +10,9 @@ func physics_update(delta):
 	
 	if entity.is_on_floor():
 		return entity.flop
+	
+	if entity.got_hurt:
+		return entity.hurt
 
 func exit():
 	super.exit()

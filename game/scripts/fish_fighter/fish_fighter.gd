@@ -61,6 +61,6 @@ func get_hurt(area):
 	hitbox_dir = area.global_position.x - global_position.x
 	got_hurt = true
 
-func take_damage(damage):
+func take_damage():
 	current_health -= damage_taken
 	print("Fish: ", current_health, "/" , max_health)
