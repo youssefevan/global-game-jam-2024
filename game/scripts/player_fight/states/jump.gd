@@ -13,6 +13,7 @@ func physics_update(delta):
 	entity.handle_input()
 	entity.apply_movement(delta)
 	entity.apply_gravity(delta)
+	entity.face_opponent()
 	
 	if Input.is_action_just_pressed("punch"):
 		return entity.punch

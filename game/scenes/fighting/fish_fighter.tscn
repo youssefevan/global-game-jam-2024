@@ -120,7 +120,7 @@ size = Vector2(36, 61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hyfs"]
 size = Vector2(40, 65)
 
-[node name="FishFighter" type="CharacterBody2D"]
+[node name="FishFighter" type="CharacterBody2D" groups=["Fish"]]
 position = Vector2(0, 3)
 collision_layer = 4
 safe_margin = 0.02
