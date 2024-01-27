@@ -87,7 +87,7 @@ script = ExtResource("5_456a7")
 [node name="Hitbox" parent="." groups=["Enemy"] instance=ExtResource("6_dukoq")]
 damage = 10.0
 knockback_angle = -75.0
-knockback_power = 600.0
+knockback_power = 450.0
 hitstun = 20
 
 [node name="Collider" parent="Hitbox" index="0"]

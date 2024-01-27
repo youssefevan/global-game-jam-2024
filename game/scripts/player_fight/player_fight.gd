@@ -38,7 +38,10 @@ func handle_input() -> void:
 	movement_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 
 func apply_movement(delta):
-	velocity.x = movement_input * speed * delta
+	if is_on_floor():
+		velocity.x = movement_input * speed * delta
+	else:
+		velocity.x = lerp(velocity.x, movement_input * speed * delta, 5 * delta)
 
 func apply_gravity(delta):
 	if !is_on_floor():
