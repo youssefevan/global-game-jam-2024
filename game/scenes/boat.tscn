@@ -20,7 +20,14 @@ metadata/_edit_lock_ = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
 
+<<<<<<< Updated upstream
 [node name="Area2D" type="Area2D" parent="."]
+=======
+[node name="Rod" type="Sprite2D" parent="."]
+position = Vector2(316, 128)
+texture = ExtResource("4_rxoyu")
+vframes = 2
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(232, 144)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccidbdojq07wq"]
+[gd_scene load_steps=7 format=3 uid="uid://dch54knxw5q4y"]
 
 [ext_resource type="Script" path="res://scripts/fish_bait.gd" id="1_rertj"]
 [ext_resource type="Texture2D" uid="uid://c7vgp37mfxrak" path="res://sprites/boat/fishbait.png" id="1_tibbp"]
@@ -53,7 +53,6 @@ texture = ExtResource("1_tibbp")
 flip_h = true
 hframes = 2
 vframes = 2
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
