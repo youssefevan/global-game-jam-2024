@@ -3,10 +3,13 @@ extends Control
 var maxhealth = 100.0
 var health = 50.0
 
+var player
+var fish
+
 func _ready():
-	Health()
+	player = get_tree().get_first_node_in_group("Player")
+	fish = get_tree().get_first_node_in_group("Fish")
 
-
-func Health():
-	$ColorRect2.scale.x = health / maxhealth
-	print(health / maxhealth) 
+func _physics_process(delta):
+	$PlayerBar.scale.x = player.current_health / player.max_health
+	$FishBar.scale.x = -fish.current_health / fish.max_health
