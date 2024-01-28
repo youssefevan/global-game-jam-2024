@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dup6y1yktfk8e"]
+
+[ext_resource type="Script" path="res://scripts/fishing_anim.gd" id="1_20who"]
+[ext_resource type="Texture2D" uid="uid://q57f5ucxl238" path="res://sprites/fighting/intro/animation-Sheet.png" id="1_m6ii4"]
+
+[node name="FishingAnim" type="Node2D"]
+script = ExtResource("1_20who")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(256, 144)
+texture = ExtResource("1_m6ii4")
+hframes = 23
+frame = 3
+
+[connection signal="frame_changed" from="Sprite2D" to="." method="_on_sprite_2d_frame_changed"]

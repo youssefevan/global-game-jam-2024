@@ -38,4 +38,4 @@ func _on_win_visibility_changed():
 	Global.player_health = player.current_health + 50
 	if Global.player_health > 200:
 		Global.player_health = 200
-	get_tree().change_scene_to_file("res://scenes/fight_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/fishing_anim.tscn")

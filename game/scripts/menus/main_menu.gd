@@ -7,7 +7,7 @@ func _ready():
 
 func _on_start_pressed():
 	Global.fish_killed = 0
-	get_tree().change_scene_to_file("res://scenes/fight_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/fishing_anim.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()
