@@ -34,7 +34,10 @@ func physics_update(delta):
 	frames -= 1
 	
 	if frames == 0:
-		return entity.idle
+		if entity.current_health <= 0:
+			return entity.dead
+		else:
+			return entity.idle
 	
 	if entity.got_hurt == true:
 		return entity.hurt

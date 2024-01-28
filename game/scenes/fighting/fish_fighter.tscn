@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmnt53lukgc3x"]
+[gd_scene load_steps=18 format=3 uid="uid://bmnt53lukgc3x"]
 
 [ext_resource type="Script" path="res://scripts/fish_fighter/fish_fighter.gd" id="1_2e3ba"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="2_q1wen"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/flop.gd" id="5_456a7"]
 [ext_resource type="PackedScene" uid="uid://btnlac8qaxwwi" path="res://scenes/fighting/engine/hitbox.tscn" id="6_dukoq"]
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/hurt.gd" id="6_er4rw"]
+[ext_resource type="Script" path="res://scripts/player_fight/states/dead.gd" id="7_g00mo"]
 [ext_resource type="PackedScene" uid="uid://cittceegqqxen" path="res://scenes/fighting/engine/hurtbox.tscn" id="7_t3ben"]
 
 [sub_resource type="Animation" id="Animation_w5oxq"]
@@ -104,8 +105,36 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_5t0uk"]
+resource_name = "Dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(64, 0, 64, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o3o5r"]
 _data = {
+"Dead": SubResource("Animation_5t0uk"),
 "Flop": SubResource("Animation_w5oxq"),
 "Hurt": SubResource("Animation_5r01u"),
 "Idle": SubResource("Animation_erwav")
@@ -153,6 +182,9 @@ script = ExtResource("5_456a7")
 
 [node name="Hurt" type="Node" parent="StateManager"]
 script = ExtResource("6_er4rw")
+
+[node name="Dead" type="Node" parent="StateManager"]
+script = ExtResource("7_g00mo")
 
 [node name="Hitbox" parent="." groups=["Enemy"] instance=ExtResource("6_dukoq")]
 damage = 10.0

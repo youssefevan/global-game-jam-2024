@@ -7,11 +7,12 @@ class_name Player
 @onready var hurt = $StateManager/Hurt
 @onready var punch = $StateManager/Punch
 @onready var kick = $StateManager/Kick
+@onready var dead = $StateManager/Dead
 
 @onready var states = $StateManager
 @onready var animator = $Animator
 
-var max_health = 100
+var max_health = 200
 var current_health
 
 var speed = 10000

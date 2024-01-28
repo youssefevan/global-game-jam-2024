@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dup2ydk6fyeue"]
+[gd_scene load_steps=6 format=3 uid="uid://dup2ydk6fyeue"]
 
 [ext_resource type="Texture2D" uid="uid://cfgou58c28pc" path="res://sprites/fighting/placeholder.png" id="1_dmjsw"]
+[ext_resource type="PackedScene" uid="uid://b706732p152p1" path="res://scenes/Health.tscn" id="1_e244t"]
 [ext_resource type="PackedScene" uid="uid://k3mgyy1e5txg" path="res://scenes/fighting/player_fight.tscn" id="3_3g21u"]
 [ext_resource type="PackedScene" uid="uid://bgw58wkyo4rqo" path="res://scenes/fighting/big_fish_fighter.tscn" id="3_ehdj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85igg"]
 size = Vector2(16, 16)
 
-[node name="FightingAreana" type="Node2D"]
-position = Vector2(128, 216)
+[node name="FightingArena" type="Node2D"]
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(128, 64)
+position = Vector2(256, 280)
 scale = Vector2(30, 1)
 metadata/_edit_group_ = true
 
@@ -22,7 +22,7 @@ shape = SubResource("RectangleShape2D_85igg")
 texture = ExtResource("1_dmjsw")
 
 [node name="Floor4" type="StaticBody2D" parent="."]
-position = Vector2(128, -208)
+position = Vector2(256, 8)
 scale = Vector2(30, 1)
 metadata/_edit_group_ = true
 
@@ -33,7 +33,7 @@ shape = SubResource("RectangleShape2D_85igg")
 texture = ExtResource("1_dmjsw")
 
 [node name="Floor2" type="StaticBody2D" parent="."]
-position = Vector2(-120, -72)
+position = Vector2(8, 144)
 scale = Vector2(1, 18)
 metadata/_edit_group_ = true
 
@@ -44,7 +44,7 @@ shape = SubResource("RectangleShape2D_85igg")
 texture = ExtResource("1_dmjsw")
 
 [node name="Floor3" type="StaticBody2D" parent="."]
-position = Vector2(376, -72)
+position = Vector2(504, 144)
 scale = Vector2(1, 18)
 metadata/_edit_group_ = true
 
@@ -54,7 +54,15 @@ shape = SubResource("RectangleShape2D_85igg")
 [node name="Sprite2D" type="Sprite2D" parent="Floor3"]
 texture = ExtResource("1_dmjsw")
 
-[node name="PlayerFight" parent="." instance=ExtResource("3_3g21u")]
+[node name="Health" parent="." instance=ExtResource("1_e244t")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="BigFishFighter" parent="." instance=ExtResource("3_ehdj5")]
-position = Vector2(256, 0)
+position = Vector2(368, 216)
+
+[node name="PlayerFight" parent="." instance=ExtResource("3_3g21u")]
+position = Vector2(128, 216)

@@ -4,11 +4,12 @@ class_name Fish
 @onready var idle = $StateManager/Idle
 @onready var flop = $StateManager/Flop
 @onready var hurt = $StateManager/Hurt
+@onready var dead = $StateManager/Dead
 
 @onready var states = $StateManager
 @onready var animator = $Animator
 
-var max_health = 25
+var max_health = 50
 var current_health
 
 var speed = 10000

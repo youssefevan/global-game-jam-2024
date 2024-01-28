@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://8uctsbr3saf8"]
+[gd_scene load_steps=5 format=3 uid="uid://8uctsbr3saf8"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_p63o0"]
 [ext_resource type="Texture2D" uid="uid://bvto18wvj7n7j" path="res://Tilemaps/Clouds/Clouds 1/1.png" id="2_q3ldy"]
 [ext_resource type="Texture2D" uid="uid://dvqx7qiry2vyy" path="res://Tilemaps/Clouds/Clouds 1/2.png" id="3_hc227"]
 [ext_resource type="Texture2D" uid="uid://cccynu0l04uhx" path="res://Tilemaps/Clouds/Clouds 1/3.png" id="4_soa4e"]
-[ext_resource type="AudioStream" uid="uid://cnyg1dl7fy65m" path="res://Sounds/1648341585ilu.mp3" id="5_vqoil"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -32,15 +31,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Start"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Options"
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Quit
-"
-
 [node name="1" type="Sprite2D" parent="."]
 show_behind_parent = true
 position = Vector2(287, 86)
@@ -55,12 +45,4 @@ texture = ExtResource("3_hc227")
 position = Vector2(283, 115)
 texture = ExtResource("4_soa4e")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_vqoil")
-volume_db = -10.306
-autoplay = true
-bus = &"Background"
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
