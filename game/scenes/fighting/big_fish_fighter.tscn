@@ -536,7 +536,6 @@ shape = SubResource("RectangleShape2D_407ox")
 [node name="StateManager" type="Node" parent="."]
 script = ExtResource("5_sqvht")
 starting_state = NodePath("Idle")
-print_states = true
 
 [node name="Idle" type="Node" parent="StateManager"]
 script = ExtResource("4_5vaya")

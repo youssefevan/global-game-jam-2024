@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqw1fi2r31f7r"]
+[gd_scene load_steps=13 format=3 uid="uid://dqw1fi2r31f7r"]
 
 [ext_resource type="Script" path="res://scripts/fight_screen.gd" id="1_2jqg7"]
 [ext_resource type="Texture2D" uid="uid://dnsp7u8biechp" path="res://sprites/fighting/player.png" id="1_p02ee"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://gadjaaamnawl" path="res://sprites/vs.png" id="2_bw5gi"]
 [ext_resource type="Texture2D" uid="uid://dx3m12u4u5ihu" path="res://sprites/fighting/bigfish1.png" id="2_q2fmt"]
 [ext_resource type="Texture2D" uid="uid://bjameiq1hcopj" path="res://sprites/fight_bg.png" id="4_nguky"]
+[ext_resource type="Theme" uid="uid://fow8xpdrct6c" path="res://theme.tres" id="4_w1c4d"]
 
 [sub_resource type="Animation" id="Animation_6loqe"]
 resource_name = "slide_player"
@@ -117,6 +118,27 @@ texture = ExtResource("4_nguky")
 [node name="VS" type="Sprite2D" parent="."]
 position = Vector2(256, 144)
 texture = ExtResource("2_bw5gi")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 518.0
+offset_bottom = 292.0
+theme = ExtResource("4_w1c4d")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "VS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_right = 512.0
+offset_bottom = 288.0
+theme = ExtResource("4_w1c4d")
+theme_override_font_sizes/font_size = 64
+text = "VS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Player" type="Sprite2D" parent="."]
 position = Vector2(-191, 191)

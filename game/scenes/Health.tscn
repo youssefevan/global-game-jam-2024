@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b706732p152p1"]
+[gd_scene load_steps=4 format=3 uid="uid://b706732p152p1"]
 
 [ext_resource type="Script" path="res://scripts/UI/Healthbar.gd" id="1_is63o"]
 [ext_resource type="Texture2D" uid="uid://gadjaaamnawl" path="res://sprites/vs.png" id="2_rcuou"]
+[ext_resource type="Theme" uid="uid://fow8xpdrct6c" path="res://theme.tres" id="3_qsbgq"]
 
 [node name="Health" type="Control"]
 layout_mode = 3
@@ -53,3 +54,24 @@ color = Color(0, 1, 0, 1)
 position = Vector2(256, 20)
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("2_rcuou")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 245.0
+offset_top = 10.0
+offset_right = 273.0
+offset_bottom = 36.0
+theme = ExtResource("3_qsbgq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "VS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 243.0
+offset_top = 8.0
+offset_right = 271.0
+offset_bottom = 34.0
+theme = ExtResource("3_qsbgq")
+text = "VS"
+horizontal_alignment = 1
+vertical_alignment = 1

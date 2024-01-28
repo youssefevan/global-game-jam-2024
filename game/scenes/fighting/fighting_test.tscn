@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dup2ydk6fyeue"]
+[gd_scene load_steps=7 format=3 uid="uid://dup2ydk6fyeue"]
 
 [ext_resource type="Script" path="res://scripts/fighting_test.gd" id="1_200f5"]
 [ext_resource type="Texture2D" uid="uid://cfgou58c28pc" path="res://sprites/fighting/placeholder.png" id="1_dmjsw"]
 [ext_resource type="PackedScene" uid="uid://b706732p152p1" path="res://scenes/Health.tscn" id="1_e244t"]
 [ext_resource type="PackedScene" uid="uid://k3mgyy1e5txg" path="res://scenes/fighting/player_fight.tscn" id="3_3g21u"]
+[ext_resource type="Theme" uid="uid://fow8xpdrct6c" path="res://theme.tres" id="5_6rs4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85igg"]
 size = Vector2(16, 16)
@@ -51,12 +52,62 @@ shape = SubResource("RectangleShape2D_85igg")
 [node name="SpawnPosition" type="Node2D" parent="."]
 position = Vector2(384, 216)
 
-[node name="Health" parent="." instance=ExtResource("1_e244t")]
+[node name="PlayerFight" parent="." instance=ExtResource("3_3g21u")]
+position = Vector2(128, 216)
+
+[node name="GUI" type="Node2D" parent="."]
+
+[node name="Death" type="Node2D" parent="GUI"]
+visible = false
+
+[node name="DeathShadow" type="Label" parent="GUI/Death"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 514.0
+offset_bottom = 290.0
+theme = ExtResource("5_6rs4w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathText" type="Label" parent="GUI/Death"]
+offset_right = 512.0
+offset_bottom = 288.0
+theme = ExtResource("5_6rs4w")
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Win" type="Node2D" parent="GUI"]
+visible = false
+
+[node name="WinShadow" type="Label" parent="GUI/Win"]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 514.0
+offset_bottom = 290.0
+theme = ExtResource("5_6rs4w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "YOU WIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinText" type="Label" parent="GUI/Win"]
+offset_right = 512.0
+offset_bottom = 288.0
+theme = ExtResource("5_6rs4w")
+text = "YOU WIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" parent="GUI" instance=ExtResource("1_e244t")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="PlayerFight" parent="." instance=ExtResource("3_3g21u")]
-position = Vector2(128, 216)
+[connection signal="visibility_changed" from="GUI/Death" to="." method="_on_death_visibility_changed"]
+[connection signal="visibility_changed" from="GUI/Win" to="." method="_on_win_visibility_changed"]

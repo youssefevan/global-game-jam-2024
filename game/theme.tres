@@ -1,0 +1,40 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://fow8xpdrct6c"]
+
+[ext_resource type="FontFile" uid="uid://bmuwc3plvuxe8" path="res://8-bitanco.ttf" id="1_w0ert"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fhcnk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6w3a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b7dpc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m85bi"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5n6k"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0, 0, 1)
+
+[resource]
+default_font = ExtResource("1_w0ert")
+default_font_size = 24
+Button/styles/disabled = SubResource("StyleBoxEmpty_fhcnk")
+Button/styles/focus = SubResource("StyleBoxEmpty_g6w3a")
+Button/styles/hover = SubResource("StyleBoxFlat_b7dpc")
+Button/styles/normal = SubResource("StyleBoxFlat_m85bi")
+Button/styles/pressed = SubResource("StyleBoxFlat_u5n6k")
