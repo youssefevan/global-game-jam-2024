@@ -23,8 +23,10 @@ func _ready():
 func _physics_process(delta):
 	if enemy.current_health <= 0 and $GUI/Win.visible == false:
 		$GUI/Win.visible = true
+		$WinPlayer.play()
 	if player.current_health <= 0 and $GUI/Death.visible == false:
 		$GUI/Death.visible = true
+		$LosePlayer.play()
 
 func _on_death_visibility_changed():
 	await get_tree().create_timer(3).timeout

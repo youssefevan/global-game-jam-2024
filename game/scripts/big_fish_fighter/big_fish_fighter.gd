@@ -13,6 +13,7 @@ class_name BigFish
 @onready var animator = $Animator
 
 @onready var hit_player = $HitPlayer
+@onready var woosh_player = $WooshPlayer
 
 var max_health = 200
 var current_health

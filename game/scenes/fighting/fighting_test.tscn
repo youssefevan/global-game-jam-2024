@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dup2ydk6fyeue"]
+[gd_scene load_steps=9 format=3 uid="uid://dup2ydk6fyeue"]
 
 [ext_resource type="Script" path="res://scripts/fighting_test.gd" id="1_200f5"]
 [ext_resource type="PackedScene" uid="uid://b706732p152p1" path="res://scenes/Health.tscn" id="1_e244t"]
 [ext_resource type="Texture2D" uid="uid://cfaylr372rqml" path="res://sprites/fighting/fightingbackground.png" id="2_m52ea"]
+[ext_resource type="AudioStream" uid="uid://bc16f20t3yxd0" path="res://Sounds/win.wav" id="2_vp67x"]
 [ext_resource type="PackedScene" uid="uid://k3mgyy1e5txg" path="res://scenes/fighting/player_fight.tscn" id="3_3g21u"]
+[ext_resource type="AudioStream" uid="uid://xpmxeumwxenm" path="res://Sounds/lose.wav" id="3_d8xqy"]
 [ext_resource type="Theme" uid="uid://dsq43g3iah0so" path="res://theme.tres" id="5_6rs4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85igg"]
@@ -11,6 +13,12 @@ size = Vector2(16, 16)
 
 [node name="FightingArena" type="Node2D"]
 script = ExtResource("1_200f5")
+
+[node name="WinPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vp67x")
+
+[node name="LosePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d8xqy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(256, 144)

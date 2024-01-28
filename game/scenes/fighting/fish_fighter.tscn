@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bmnt53lukgc3x"]
+[gd_scene load_steps=22 format=3 uid="uid://bmnt53lukgc3x"]
 
 [ext_resource type="Script" path="res://scripts/fish_fighter/fish_fighter.gd" id="1_2e3ba"]
+[ext_resource type="AudioStream" uid="uid://cq1wpq13f1ftp" path="res://Sounds/gross.ogg" id="2_05jpw"]
 [ext_resource type="AudioStream" uid="uid://nnwqgmx24xsf" path="res://Sounds/flop.ogg" id="2_b6n6k"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="2_q1wen"]
 [ext_resource type="Texture2D" uid="uid://ceq1o502n43lb" path="res://sprites/fighting/fish1.png" id="2_rdmtk"]
@@ -211,6 +212,10 @@ safe_margin = 0.02
 script = ExtResource("1_2e3ba")
 
 [node name="FlopPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_05jpw")
+volume_db = -2.0
+
+[node name="FlopPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_b6n6k")
 volume_db = -2.0
 

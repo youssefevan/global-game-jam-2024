@@ -10,6 +10,8 @@ func enter():
 	random.randomize()
 	entity.flop_player.pitch_scale = random.randf_range(0.8, 1.2)
 	entity.flop_player.play()
+	entity.flop_player2.pitch_scale = random.randf_range(0.8, 1.2)
+	entity.flop_player2.play()
 
 func physics_update(delta):
 	super.physics_update(delta)

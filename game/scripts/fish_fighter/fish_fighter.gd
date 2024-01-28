@@ -10,6 +10,7 @@ class_name Fish
 @onready var animator = $Animator
 
 @onready var flop_player = $FlopPlayer
+@onready var flop_player2 = $FlopPlayer2
 @onready var hit_player = $HitPlayer
 
 var max_health = 50

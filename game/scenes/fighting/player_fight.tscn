@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://k3mgyy1e5txg"]
+[gd_scene load_steps=27 format=3 uid="uid://k3mgyy1e5txg"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="1_261xr"]
 [ext_resource type="Script" path="res://scripts/player_fight/player_fight.gd" id="1_klvyr"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/idle.gd" id="2_3h7xc"]
 [ext_resource type="AudioStream" uid="uid://go8jlnt6mnc0" path="res://Sounds/player hit.ogg" id="2_07y5q"]
 [ext_resource type="Texture2D" uid="uid://dnsp7u8biechp" path="res://sprites/fighting/player.png" id="2_t71ma"]
+[ext_resource type="AudioStream" uid="uid://00gsgrdeet3r" path="res://Sounds/woosh.ogg" id="3_rjqjq"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/move.gd" id="5_24w60"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/punch.gd" id="6_6dcrj"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/jump.gd" id="6_m0mlt"]
@@ -538,6 +539,10 @@ script = ExtResource("1_klvyr")
 
 [node name="HitPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_07y5q")
+
+[node name="WooshPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rjqjq")
+volume_db = -5.0
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {

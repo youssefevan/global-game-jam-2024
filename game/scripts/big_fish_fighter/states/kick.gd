@@ -8,6 +8,11 @@ func enter():
 	
 	if entity.is_on_floor():
 		entity.movement_direction = 0
+	
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	entity.woosh_player.pitch_scale = random.randf_range(0.6, 1.0)
+	entity.woosh_player.play()
 
 func physics_update(delta):
 	super.physics_update(delta)
