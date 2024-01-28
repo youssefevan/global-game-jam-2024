@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccidbdojq07wq"]
+
+[ext_resource type="Script" path="res://scripts/fish_bait.gd" id="1_rertj"]
+[ext_resource type="Texture2D" uid="uid://c7vgp37mfxrak" path="res://sprites/boat/fishbait.png" id="1_tibbp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d15ud"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_lbavm"]
+resource_name = "anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_7n0yl"]
+resource_name = "caught"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q5p1r"]
+_data = {
+"anim": SubResource("Animation_lbavm"),
+"caught": SubResource("Animation_7n0yl")
+}
+
+[node name="FishBait" type="Area2D"]
+script = ExtResource("1_rertj")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d15ud")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_tibbp")
+flip_h = true
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q5p1r")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
