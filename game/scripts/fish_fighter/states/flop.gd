@@ -4,6 +4,12 @@ func enter():
 	super.enter()
 	entity.randomize_direction()
 	entity.velocity.y = -entity.flop_power
+	
+	
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	entity.flop_player.pitch_scale = random.randf_range(0.8, 1.2)
+	entity.flop_player.play()
 
 func physics_update(delta):
 	super.physics_update(delta)

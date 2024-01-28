@@ -1,14 +1,55 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmnt53lukgc3x"]
+[gd_scene load_steps=21 format=3 uid="uid://bmnt53lukgc3x"]
 
 [ext_resource type="Script" path="res://scripts/fish_fighter/fish_fighter.gd" id="1_2e3ba"]
+[ext_resource type="AudioStream" uid="uid://nnwqgmx24xsf" path="res://Sounds/flop.ogg" id="2_b6n6k"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="2_q1wen"]
 [ext_resource type="Texture2D" uid="uid://ceq1o502n43lb" path="res://sprites/fighting/fish1.png" id="2_rdmtk"]
+[ext_resource type="AudioStream" uid="uid://hqiwv7ey3bjx" path="res://Sounds/small fish hit.ogg" id="3_yqhjp"]
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/idle.gd" id="4_sxkpv"]
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/flop.gd" id="5_456a7"]
 [ext_resource type="PackedScene" uid="uid://btnlac8qaxwwi" path="res://scenes/fighting/engine/hitbox.tscn" id="6_dukoq"]
 [ext_resource type="Script" path="res://scripts/fish_fighter/states/hurt.gd" id="6_er4rw"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/dead.gd" id="7_g00mo"]
 [ext_resource type="PackedScene" uid="uid://cittceegqqxen" path="res://scenes/fighting/engine/hurtbox.tscn" id="7_t3ben"]
+
+[sub_resource type="Animation" id="Animation_5t0uk"]
+resource_name = "Dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(64, 0, 64, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
 
 [sub_resource type="Animation" id="Animation_w5oxq"]
 resource_name = "Flop"
@@ -130,45 +171,6 @@ tracks/2/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_5t0uk"]
-resource_name = "Dead"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Rect2(64, 0, 64, 64)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox/Collider:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.5708]
-}
-
 [sub_resource type="Animation" id="Animation_kk5ig"]
 length = 0.001
 tracks/0/type = "value"
@@ -207,6 +209,13 @@ position = Vector2(0, 3)
 collision_layer = 4
 safe_margin = 0.02
 script = ExtResource("1_2e3ba")
+
+[node name="FlopPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b6n6k")
+volume_db = -2.0
+
+[node name="HitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yqhjp")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {

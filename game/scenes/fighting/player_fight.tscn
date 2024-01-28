@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://k3mgyy1e5txg"]
+[gd_scene load_steps=26 format=3 uid="uid://k3mgyy1e5txg"]
 
 [ext_resource type="Script" path="res://scripts/state_machine/state_manager.gd" id="1_261xr"]
 [ext_resource type="Script" path="res://scripts/player_fight/player_fight.gd" id="1_klvyr"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/idle.gd" id="2_3h7xc"]
+[ext_resource type="AudioStream" uid="uid://go8jlnt6mnc0" path="res://Sounds/player hit.ogg" id="2_07y5q"]
 [ext_resource type="Texture2D" uid="uid://dnsp7u8biechp" path="res://sprites/fighting/player.png" id="2_t71ma"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/move.gd" id="5_24w60"]
 [ext_resource type="Script" path="res://scripts/player_fight/states/punch.gd" id="6_6dcrj"]
@@ -534,6 +535,9 @@ size = Vector2(56, 96)
 collision_layer = 2
 safe_margin = 0.02
 script = ExtResource("1_klvyr")
+
+[node name="HitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_07y5q")
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 libraries = {

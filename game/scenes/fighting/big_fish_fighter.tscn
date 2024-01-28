@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bgw58wkyo4rqo"]
+[gd_scene load_steps=26 format=3 uid="uid://bgw58wkyo4rqo"]
 
 [ext_resource type="Texture2D" uid="uid://dx3m12u4u5ihu" path="res://sprites/fighting/bigfish1.png" id="1_5uvan"]
 [ext_resource type="Script" path="res://scripts/big_fish_fighter/big_fish_fighter.gd" id="1_qygls"]
 [ext_resource type="PackedScene" uid="uid://btnlac8qaxwwi" path="res://scenes/fighting/engine/hitbox.tscn" id="2_3a44s"]
+[ext_resource type="AudioStream" uid="uid://bc3su0jhhxu2f" path="res://Sounds/big fish hit.ogg" id="2_4m7hh"]
 [ext_resource type="PackedScene" uid="uid://cittceegqqxen" path="res://scenes/fighting/engine/hurtbox.tscn" id="3_ydnv3"]
 [ext_resource type="Script" path="res://scripts/big_fish_fighter/states/idle.gd" id="4_5vaya"]
 [ext_resource type="Script" path="res://scripts/big_fish_fighter/states/move.gd" id="5_ff1tb"]
@@ -545,6 +546,9 @@ size = Vector2(56, 105)
 [node name="BigFishFighter" type="CharacterBody2D" groups=["Fish"]]
 collision_layer = 4
 script = ExtResource("1_qygls")
+
+[node name="HitPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4m7hh")
 
 [node name="Animator" type="AnimationPlayer" parent="." groups=["Fish"]]
 libraries = {

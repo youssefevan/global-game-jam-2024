@@ -12,6 +12,8 @@ class_name BigFish
 @onready var states = $StateManager
 @onready var animator = $Animator
 
+@onready var hit_player = $HitPlayer
+
 var max_health = 200
 var current_health
 

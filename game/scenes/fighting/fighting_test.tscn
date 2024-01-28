@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dup2ydk6fyeue"]
 
 [ext_resource type="Script" path="res://scripts/fighting_test.gd" id="1_200f5"]
-[ext_resource type="Texture2D" uid="uid://cfgou58c28pc" path="res://sprites/fighting/placeholder.png" id="1_dmjsw"]
 [ext_resource type="PackedScene" uid="uid://b706732p152p1" path="res://scenes/Health.tscn" id="1_e244t"]
+[ext_resource type="Texture2D" uid="uid://cfaylr372rqml" path="res://sprites/fighting/fightingbackground.png" id="2_m52ea"]
 [ext_resource type="PackedScene" uid="uid://k3mgyy1e5txg" path="res://scenes/fighting/player_fight.tscn" id="3_3g21u"]
 [ext_resource type="Theme" uid="uid://dsq43g3iah0so" path="res://theme.tres" id="5_6rs4w"]
 
@@ -12,18 +12,17 @@ size = Vector2(16, 16)
 [node name="FightingArena" type="Node2D"]
 script = ExtResource("1_200f5")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(256, 144)
+texture = ExtResource("2_m52ea")
+
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(256, 280)
+position = Vector2(256, 256)
 scale = Vector2(32, 1)
 metadata/_edit_group_ = true
 
 [node name="Collider" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("RectangleShape2D_85igg")
-
-[node name="Sprite2D" type="Sprite2D" parent="Floor"]
-position = Vector2(0, -12)
-scale = Vector2(1, 2.5)
-texture = ExtResource("1_dmjsw")
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 position = Vector2(256, 8)

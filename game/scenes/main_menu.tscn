@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://8uctsbr3saf8"]
+[gd_scene load_steps=4 format=3 uid="uid://8uctsbr3saf8"]
 
 [ext_resource type="Theme" uid="uid://dsq43g3iah0so" path="res://theme.tres" id="1_5qpyf"]
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_p63o0"]
-[ext_resource type="Texture2D" uid="uid://bvto18wvj7n7j" path="res://Tilemaps/Clouds/Clouds 1/1.png" id="2_q3ldy"]
-[ext_resource type="Texture2D" uid="uid://dvqx7qiry2vyy" path="res://Tilemaps/Clouds/Clouds 1/2.png" id="3_hc227"]
-[ext_resource type="Texture2D" uid="uid://cccynu0l04uhx" path="res://Tilemaps/Clouds/Clouds 1/3.png" id="4_soa4e"]
+[ext_resource type="Texture2D" uid="uid://cfaylr372rqml" path="res://sprites/fighting/fightingbackground.png" id="3_ea57f"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -18,19 +16,10 @@ grow_vertical = 2
 theme = ExtResource("1_5qpyf")
 script = ExtResource("1_p63o0")
 
-[node name="1" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(287, 86)
-texture = ExtResource("2_q3ldy")
-
-[node name="2" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(286, 128)
-texture = ExtResource("3_hc227")
-
-[node name="3" type="Sprite2D" parent="."]
-position = Vector2(283, 115)
-texture = ExtResource("4_soa4e")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(256, 146)
+texture = ExtResource("3_ea57f")
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 1
@@ -64,5 +53,22 @@ offset_top = 250.0
 offset_right = 153.0
 offset_bottom = 276.0
 text = "Fish Killed:"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 80.0
+offset_right = 343.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "FIsh Fighter X"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 78.0
+offset_right = 341.0
+offset_bottom = 104.0
+text = "FIsh Fighter X"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqw1fi2r31f7r"]
+[gd_scene load_steps=13 format=3 uid="uid://cmcj5pvihtclt"]
 
 [ext_resource type="Script" path="res://scripts/fight_screen.gd" id="1_2jqg7"]
 [ext_resource type="Texture2D" uid="uid://dnsp7u8biechp" path="res://sprites/fighting/player.png" id="1_p02ee"]
@@ -6,23 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://gadjaaamnawl" path="res://sprites/vs.png" id="2_bw5gi"]
 [ext_resource type="Texture2D" uid="uid://dx3m12u4u5ihu" path="res://sprites/fighting/bigfish1.png" id="2_q2fmt"]
 [ext_resource type="Texture2D" uid="uid://bjameiq1hcopj" path="res://sprites/fight_bg.png" id="4_nguky"]
-[ext_resource type="Theme" uid="uid://fow8xpdrct6c" path="res://theme.tres" id="4_w1c4d"]
-
-[sub_resource type="Animation" id="Animation_6loqe"]
-resource_name = "slide_player"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-191, 191), Vector2(111, 191)]
-}
+[ext_resource type="Theme" uid="uid://dsq43g3iah0so" path="res://theme.tres" id="4_w1c4d"]
 
 [sub_resource type="Animation" id="Animation_jogjw"]
 length = 0.001
@@ -63,6 +47,22 @@ tracks/2/keys = {
 "values": [Vector2(704, 192)]
 }
 
+[sub_resource type="Animation" id="Animation_jaeqy"]
+resource_name = "slide_big"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BigFish:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(704, 192), Vector2(438, 192)]
+}
+
 [sub_resource type="Animation" id="Animation_ybc8s"]
 resource_name = "slide_fish"
 length = 0.5
@@ -79,20 +79,20 @@ tracks/0/keys = {
 "values": [Vector2(648, 153), Vector2(452, 153)]
 }
 
-[sub_resource type="Animation" id="Animation_jaeqy"]
-resource_name = "slide_big"
+[sub_resource type="Animation" id="Animation_6loqe"]
+resource_name = "slide_player"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BigFish:position")
+tracks/0/path = NodePath("Player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(704, 192), Vector2(438, 192)]
+"values": [Vector2(-191, 191), Vector2(111, 191)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jxdfb"]

@@ -9,6 +9,9 @@ class_name Fish
 @onready var states = $StateManager
 @onready var animator = $Animator
 
+@onready var flop_player = $FlopPlayer
+@onready var hit_player = $HitPlayer
+
 var max_health = 50
 var current_health
 

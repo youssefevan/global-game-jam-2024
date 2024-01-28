@@ -11,6 +11,11 @@ func enter():
 	
 	entity.take_damage()
 	frames = entity.hitstun_frames
+	
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	entity.hit_player.pitch_scale = random.randf_range(0.8, 1.2)
+	entity.hit_player.play()
 
 func get_knockback_angle():
 	var kb_angle_radians = deg_to_rad(entity.knockback_angle)
