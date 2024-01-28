@@ -56,11 +56,13 @@ func randomize_direction():
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	
-	if random.randi_range(0, 5) == 0:
+	var dir_int = random.randi_range(0, 5)
+	
+	if dir_int == 0:
 		movement_direction = 0
-	elif random.randi_range(0, 5) == 1:
+	elif dir_int == 1:
 		movement_direction = $Hitbox.scale.x
-	elif random.randi_range(0, 5) >= 2:
+	elif dir_int >= 2:
 		movement_direction = -$Hitbox.scale.x
 
 func get_random_action():
@@ -69,11 +71,13 @@ func get_random_action():
 	
 	var action : State
 	
-	if random.randi_range(0, 2) == 0:
+	var action_int = random.randi_range(0, 2)
+	
+	if action_int == 0:
 		action = punch
-	elif random.randi_range(0, 2) == 1:
+	elif action_int == 1:
 		action = kick
-	elif random.randi_range(0, 10) >= 2:
+	elif action_int == 2:
 		action = move
 	
 	return action
