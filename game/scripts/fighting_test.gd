@@ -32,4 +32,7 @@ func _on_death_visibility_changed():
 
 func _on_win_visibility_changed():
 	await get_tree().create_timer(3).timeout
+	Global.player_health = player.current_health + 50
+	if Global.player_health > 200:
+		Global.player_health = 200
 	get_tree().change_scene_to_file("res://scenes/fight_screen.tscn")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfgou58c28pc" path="res://sprites/fighting/placeholder.png" id="1_dmjsw"]
 [ext_resource type="PackedScene" uid="uid://b706732p152p1" path="res://scenes/Health.tscn" id="1_e244t"]
 [ext_resource type="PackedScene" uid="uid://k3mgyy1e5txg" path="res://scenes/fighting/player_fight.tscn" id="3_3g21u"]
-[ext_resource type="Theme" uid="uid://fow8xpdrct6c" path="res://theme.tres" id="5_6rs4w"]
+[ext_resource type="Theme" uid="uid://dsq43g3iah0so" path="res://theme.tres" id="5_6rs4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85igg"]
 size = Vector2(16, 16)

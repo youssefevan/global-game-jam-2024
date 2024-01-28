@@ -36,7 +36,7 @@ var opponent
 
 func _ready():
 	states.init(self)
-	current_health = max_health
+	current_health = Global.player_health
 	jump_was_pressed = false
 	$Hitbox/Collider.disabled = true
 	
