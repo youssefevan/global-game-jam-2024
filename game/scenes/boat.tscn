@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://t1qq68p4h2k6"]
+[gd_scene load_steps=4 format=3 uid="uid://t1qq68p4h2k6"]
 
 [ext_resource type="PackedScene" uid="uid://bfu7f18fawlqs" path="res://scenes/boatPlayer.tscn" id="1_0texm"]
 [ext_resource type="PackedScene" uid="uid://lmfpcacf8f20" path="res://scenes/tile_map.tscn" id="2_rumeg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_alsre"]
+radius = 144.222
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,5 +19,11 @@ metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(232, 144)
+shape = SubResource("CircleShape2D_alsre")
 
 [connection signal="timeout" from="Timer" to="PlayerBoat" method="_on_timer_timeout"]
