@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cfgou58c28pc" path="res://sprites/fighting/placeholder.png" id="1_dmjsw"]
 [ext_resource type="PackedScene" uid="uid://k3mgyy1e5txg" path="res://scenes/fighting/player_fight.tscn" id="3_3g21u"]
-[ext_resource type="PackedScene" path="res://scenes/fighting/big_fish_fighter.tscn" id="3_ehdj5"]
+[ext_resource type="PackedScene" uid="uid://bgw58wkyo4rqo" path="res://scenes/fighting/big_fish_fighter.tscn" id="3_ehdj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85igg"]
 size = Vector2(16, 16)
