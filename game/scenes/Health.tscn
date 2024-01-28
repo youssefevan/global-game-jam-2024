@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b706732p152p1"]
+[gd_scene load_steps=3 format=3 uid="uid://b706732p152p1"]
 
 [ext_resource type="Script" path="res://scripts/UI/Healthbar.gd" id="1_is63o"]
+[ext_resource type="Texture2D" uid="uid://gadjaaamnawl" path="res://sprites/vs.png" id="2_rcuou"]
 
 [node name="Health" type="Control"]
 layout_mode = 3
@@ -15,29 +16,40 @@ script = ExtResource("1_is63o")
 
 [node name="PlayerBG" type="ColorRect" parent="."]
 layout_mode = 1
-offset_right = 201.0
-offset_bottom = 16.0
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 216.0
+offset_bottom = 28.0
 color = Color(1, 0, 0, 1)
 
 [node name="PlayerBar" type="ColorRect" parent="."]
 top_level = true
 layout_mode = 1
-offset_right = 201.0
-offset_bottom = 16.0
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 216.0
+offset_bottom = 28.0
 color = Color(0, 1, 0, 1)
 
 [node name="FishBG" type="ColorRect" parent="."]
 layout_mode = 1
-offset_left = 311.0
-offset_right = 512.0
-offset_bottom = 16.0
+offset_left = 296.0
+offset_top = 12.0
+offset_right = 488.0
+offset_bottom = 28.0
 color = Color(1, 0, 0, 1)
 
 [node name="FishBar" type="ColorRect" parent="."]
 top_level = true
 layout_mode = 1
-offset_left = 512.0
-offset_right = 713.0
-offset_bottom = 16.0
+offset_left = 488.0
+offset_top = 12.0
+offset_right = 680.0
+offset_bottom = 28.0
 scale = Vector2(-1, 1)
 color = Color(0, 1, 0, 1)
+
+[node name="VS" type="Sprite2D" parent="."]
+position = Vector2(256, 20)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("2_rcuou")

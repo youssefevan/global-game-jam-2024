@@ -518,7 +518,7 @@ size = Vector2(56, 105)
 collision_layer = 4
 script = ExtResource("1_qygls")
 
-[node name="Animator" type="AnimationPlayer" parent="."]
+[node name="Animator" type="AnimationPlayer" parent="." groups=["Fish"]]
 libraries = {
 "": SubResource("AnimationLibrary_6s2w4")
 }

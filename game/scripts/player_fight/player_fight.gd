@@ -38,11 +38,11 @@ func _ready():
 	states.init(self)
 	current_health = max_health
 	jump_was_pressed = false
+	$Hitbox/Collider.disabled = true
 	
+	await get_tree().create_timer(0.1).timeout
 	opponent = get_tree().get_first_node_in_group("Fish")
 	face_opponent()
-	
-	$Hitbox/Collider.disabled = true
 
 func _physics_process(delta):
 	states.physics_update(delta)
@@ -90,9 +90,10 @@ func take_damage():
 	print("Player: ", current_health, "/" , max_health)
 
 func face_opponent():
-	if opponent.global_position.x - global_position.x >= 0:
-		$Sprite.flip_h = false
-		$Hitbox.scale.x = 1
-	else:
-		$Sprite.flip_h = true
-		$Hitbox.scale.x = -1
+	if opponent:
+		if opponent.global_position.x - global_position.x >= 0:
+			$Sprite.flip_h = false
+			$Hitbox.scale.x = 1
+		else:
+			$Sprite.flip_h = true
+			$Hitbox.scale.x = -1

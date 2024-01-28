@@ -1,3 +1,3 @@
 extends Node
 
-var fish_type = "small"
+var fish_type := 0
