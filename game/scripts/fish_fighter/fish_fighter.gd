@@ -64,4 +64,4 @@ func get_hurt(area):
 
 func take_damage():
 	current_health -= damage_taken
-	print("Fish: ", current_health, "/" , max_health)
+	#print("Fish: ", current_health, "/" , max_health)

@@ -19,6 +19,7 @@ var speed = 10000
 var movement_direction : float
 
 var gravity = 1000
+var jump_velocity = 400
 
 var damage_taken : float
 var knockback_angle : float
@@ -71,13 +72,15 @@ func get_random_action():
 	
 	var action : State
 	
-	var action_int = random.randi_range(0, 2)
+	var action_int = random.randi_range(0, 3)
 	
 	if action_int == 0:
 		action = punch
 	elif action_int == 1:
 		action = kick
 	elif action_int == 2:
+		action = jump
+	elif action_int == 3:
 		action = move
 	
 	return action
@@ -96,7 +99,7 @@ func get_hurt(area):
 
 func take_damage():
 	current_health -= damage_taken
-	print("Fish: ", current_health, "/" , max_health)
+	#print("Fish: ", current_health, "/" , max_health)
 
 func face_opponent():
 	if opponent.global_position.x - global_position.x >= 0:

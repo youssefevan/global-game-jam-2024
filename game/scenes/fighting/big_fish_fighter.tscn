@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bgw58wkyo4rqo"]
+[gd_scene load_steps=25 format=3 uid="uid://bgw58wkyo4rqo"]
 
 [ext_resource type="Texture2D" uid="uid://dx3m12u4u5ihu" path="res://sprites/fighting/bigfish1.png" id="1_5uvan"]
 [ext_resource type="Script" path="res://scripts/big_fish_fighter/big_fish_fighter.gd" id="1_qygls"]
@@ -497,11 +497,39 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_osby5"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(0, 0, 128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6s2w4"]
 _data = {
 "Dead": SubResource("Animation_t1kiu"),
 "Hurt": SubResource("Animation_0ajah"),
 "Idle": SubResource("Animation_wwyhn"),
+"Jump": SubResource("Animation_osby5"),
 "Kick": SubResource("Animation_snnwx"),
 "Move": SubResource("Animation_cj3rw"),
 "Punch": SubResource("Animation_tmvdc"),

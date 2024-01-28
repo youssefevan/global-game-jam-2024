@@ -87,7 +87,7 @@ func get_hurt(area):
 
 func take_damage():
 	current_health -= damage_taken
-	print("Player: ", current_health, "/" , max_health)
+	#print("Player: ", current_health, "/" , max_health)
 
 func face_opponent():
 	if opponent:
