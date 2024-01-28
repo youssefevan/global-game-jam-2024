@@ -32,10 +32,10 @@ func physics_update(delta):
 		var attack_int = random.randi_range(0, 1)
 		
 		if attack_int == 0:
-			print("punch")
+			#print("punch")
 			return entity.punch
 		elif attack_int == 1:
-			print("kick")
+			#print("kick")
 			return entity.kick
 
 func exit():
