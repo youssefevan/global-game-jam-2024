@@ -7,6 +7,7 @@ class_name Player
 @onready var hurt = $StateManager/Hurt
 @onready var punch = $StateManager/Punch
 @onready var kick = $StateManager/Kick
+@onready var dead = $StateManager/Dead
 
 @onready var states = $StateManager
 @onready var animator = $Animator

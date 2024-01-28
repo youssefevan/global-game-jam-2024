@@ -1,7 +1,5 @@
 extends State
 
-var frames : int
-
 func enter():
 	super.enter()
 	entity.got_hurt = false
@@ -10,7 +8,6 @@ func enter():
 	#print(entity.velocity)
 	
 	entity.take_damage()
-	frames = entity.hitstun_frames
 
 func get_knockback_angle():
 	var kb_angle_radians = deg_to_rad(entity.knockback_angle)
@@ -31,17 +28,8 @@ func physics_update(delta):
 	#entity.apply_movement(delta)
 	entity.apply_gravity(delta)
 	
-	frames -= 1
-	
-	if frames == 0:
-		if entity.current_health <= 0:
-			return entity.dead
-		else:
-			return entity.idle
-	
-	if entity.got_hurt == true:
-		return entity.hurt
+	if entity.is_on_floor():
+		entity.velocity.x = 0
 
 func exit():
 	super.exit()
-	frames = 0
