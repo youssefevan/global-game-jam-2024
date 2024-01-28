@@ -12,7 +12,7 @@ class_name Player
 @onready var states = $StateManager
 @onready var animator = $Animator
 
-var max_health = 100
+var max_health = 200
 var current_health
 
 var speed = 10000

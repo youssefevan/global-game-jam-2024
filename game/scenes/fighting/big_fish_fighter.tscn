@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bgw58wkyo4rqo"]
+[gd_scene load_steps=24 format=3 uid="uid://bgw58wkyo4rqo"]
 
 [ext_resource type="Texture2D" uid="uid://dx3m12u4u5ihu" path="res://sprites/fighting/bigfish1.png" id="1_5uvan"]
 [ext_resource type="Script" path="res://scripts/big_fish_fighter/big_fish_fighter.gd" id="1_qygls"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/big_fish_fighter/states/jump.gd" id="6_p70fp"]
 [ext_resource type="Script" path="res://scripts/big_fish_fighter/states/punch.gd" id="7_ommms"]
 [ext_resource type="Script" path="res://scripts/big_fish_fighter/states/kick.gd" id="8_xfdtk"]
+[ext_resource type="Script" path="res://scripts/player_fight/states/dead.gd" id="10_l3qb5"]
 
 [sub_resource type="Animation" id="Animation_0ajah"]
 resource_name = "Hurt"
@@ -107,7 +108,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [25.0]
+"values": [20.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -469,8 +470,36 @@ tracks/9/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_t1kiu"]
+resource_name = "Dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(128, 0, 128, 128)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6s2w4"]
 _data = {
+"Dead": SubResource("Animation_t1kiu"),
 "Hurt": SubResource("Animation_0ajah"),
 "Idle": SubResource("Animation_wwyhn"),
 "Kick": SubResource("Animation_snnwx"),
@@ -526,6 +555,9 @@ script = ExtResource("7_ommms")
 
 [node name="Kick" type="Node" parent="StateManager"]
 script = ExtResource("8_xfdtk")
+
+[node name="Dead" type="Node" parent="StateManager"]
+script = ExtResource("10_l3qb5")
 
 [node name="Hitbox" parent="." groups=["Enemy"] instance=ExtResource("2_3a44s")]
 damage = 10.0

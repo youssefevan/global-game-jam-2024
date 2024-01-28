@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85igg"]
 size = Vector2(16, 16)
 
-[node name="FightingAreana" type="Node2D"]
+[node name="FightingArena" type="Node2D"]
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(256, 280)
@@ -61,8 +61,8 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="BigFishFighter" parent="." instance=ExtResource("3_ehdj5")]
+position = Vector2(368, 216)
+
 [node name="PlayerFight" parent="." instance=ExtResource("3_3g21u")]
 position = Vector2(128, 216)
-
-[node name="BigFishFighter" parent="." instance=ExtResource("3_ehdj5")]
-position = Vector2(384, 216)
